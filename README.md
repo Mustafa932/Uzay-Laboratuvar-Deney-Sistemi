@@ -9,9 +9,7 @@ Projenin çıkış noktası, teorik fizik formüllerini dinamik bir yazılım ha
 Kodun mimarisini kurgularken sadece sonuca odaklanmadım, aynı zamanda C dilinin zorlayıcı teknik kurallarını (özellikle pointer yönetimi) projeye tam olarak yedirdim:
 
 ### 1. Pointer (İşaretçi) Aritmetiği
-Proje yönergesine uygun olarak, kodun hiçbir yerinde dizilere erişmek için klasik indisleme (`dizi[i]`) yöntemini kullanmadım. Bunun yerine tamamen **pointer aritmetiği** (`*(ptr + i)`) kullandım. Gezegen ivmelerine ve isimlerine bu yöntemle erişmek, bellek adresleri üzerindeki hakimiyetimi geliştirmemi sağladı.
-
-
+Proje yönergesine uygun olarak, kodun hiçbir yerinde dizilere erişmek için klasik indisleme (`dizi[i]`) yöntemini kullanmadım. Bunun yerine tamamen **pointer aritmetiği** (`*(ptr + i)`) kullandım. 
 
 ### 2. Modüler Fonksiyon Yapısı
 Her deney (Serbest Düşme, Yukarı Atış, Asansör vb.) kendi fonksiyonu içerisinde çalışıyor. Fonksiyonlara parametre aktarırken bellek adreslerini kullandım (pass-by-reference). Bu sayede `main` fonksiyonu oldukça sade kalarak sadece menü yönetimini ve ana döngüyü kontrol ediyor.
@@ -27,10 +25,14 @@ Bu sayede girilen hatalı verileri anında mutlak değerine çevirerek fiziksel 
 ## Kullanılan Fiziksel Modeller
 Simülasyon içerisinde aşağıdaki formüller, 8 farklı gezegenin yerçekimi ivmesi parametre alınarak çözülmektedir:
 
-* **Atış Mekaniği:** Serbest düşme $$h = \frac{1}{2}gt^2$$ve yukarı atış$$h_{max} = \frac{v_0^2}{2g}$$
-* **Enerji ve Statik:** Potansiyel enerji $E_p = mgh$ ve ağırlık $G = mg$
-* **Akışkanlar:** Hidrostatik basınç $P = \rho gh$ ve Arşimet kaldırma kuvveti $F_k = \rho gV$
-* **Dinamik:** Sarkaç periyodu $$T = 2\pi\sqrt{\frac{L}{g}}$$ve asansör sistemleri için etkin ağırlık$$N = m(g \pm a)$$
+* **Serbest Düşme:** h = 1/2 * g * t^2
+* **Yukarı Atış:** h_max = (v0^2) / (2 * g)
+* **Ağırlık:** G = m * g
+* **Potansiyel Enerji:** Ep = m * g * h
+* **Hidrostatik Basınç:** P = rho * g * h
+* **Arşimet Kaldırma Kuvveti:** Fk = rho * g * V
+* **Sarkaç Periyodu:** T = 2 * PI * sqrt(L / g)
+* **İp Gerilmesi:** T = m * g
+* **Asansör Deneyi:** N = m * (g + a) veya N = m * (g - a)
 
 ---
-Bu proje, hem fiziksel yasaların görselleştirilmesi hem de C dilinde bellek yönetimi ve hata yönetimi konularındaki yetkinliğimi sergilemek adına önemli bir çalışmadır.
